@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikram Portfolio | Digital Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c98f0;
+            --sidebar-bg: #f9f9f9;
+            --text-dark: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        
+        body, html { 
+            height: 100%; 
+            overflow: hidden; /* Scroll band karne ke liye */
+            display: flex; 
+        }
+
+        /* Sidebar Styling */
+        nav {
+            width: 300px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            border-right: 1px solid #eee;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 4px solid var(--primary-color);
+        }
+
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        nav h1 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 5px; }
+        nav p { font-size: 10px; letter-spacing: 2px; color: var(--primary-color); font-weight: bold; margin-bottom: 30px; text-transform: uppercase; }
+
+        nav ul { list-style: none; width: 100%; }
+        nav ul li { margin: 10px 0; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: #666; 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            padding: 10px;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        nav ul li a:hover, nav ul li a.active { color: var(--primary-color); background: #fff; border-radius: 5px; }
+
+        /* Main Content Container */
+        .content-container {
+            flex-grow: 1;
+            height: 100vh;
+            position: relative;
+        }
+
+        .page-section {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: none; /* By default sab chhupa do */
+            padding: 60px;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-section.active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page with Background */
+        #home { 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('http://googleusercontent.com/image_generation_content/0') center/cover; 
+            color: #fff; 
+        }
+        .hero-text h2 { font-family: 'Playfair Display', serif; font-size: 60px; margin-bottom: 10px; }
+        .hero-text span { color: var(--primary-color); }
+
+        /* Other Pages Styling */
+        .section-title { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 30px; border-bottom: 3px solid var(--primary-color); display: inline-block; }
+
+        .yt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .yt-card { padding: 20px; background: #f2f3f7; border-radius: 10px; text-align: center; }
+        .yt-card i { font-size: 30px; color: red; margin-bottom: 10px; }
+        .yt-card a { color: var(--primary-color); text-decoration: none; font-weight: bold; font-size: 14px; }
+
+        .contact-box p { font-size: 20px; margin: 15px 0; }
+        .social-box a { font-size: 22px; color: var(--text-dark); text-decoration: none; display: block; margin: 15px 0; }
+        .social-box i { color: var(--primary-color); margin-right: 15px; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; overflow: auto; }
+            nav { width: 100%; height: auto; }
+            .content-container { height: auto; position: static; }
+            .page-section { position: static; display: flex; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="profile-img">
+            <img src="http://googleusercontent.com/image_generation_content/0" alt="Vikram">
+        </div>
+        <h1>Vikram</h1>
+        <p>YouTuber & Tech Creator</p>
+        <ul>
+            <li><a onclick="showPage('home')" id="link-home" class="active">Home</a></li>
+            <li><a onclick="showPage('youtube')" id="link-youtube">YouTube</a></li>
+            <li><a onclick="showPage('social')" id="link-social">Social Media</a></li>
+            <li><a onclick="showPage('contact')" id="link-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        
+        <section id="home" class="page-section active">
+            <div class="hero-text">
+                <h2>I am <span>Vikram</span></h2>
+                <p>Digital strategy, technology, and Indian culture enthusiast.</p>
+            </div>
+        </section>
+
+        <section id="youtube" class="page-section">
+            <h2 class="section-title">My Channels</h2>
+            <div class="yt-grid">
+                <div class="yt-card">
+                    <i class="fab fa-youtube"></i>
+                    <h4>Mr Crazy Hacker</h4>
+                    <a href="https://youtube.com/@mrcrazyhacker2026" target="_blank">Subscribe</a>
+                </div>
+                <div class="yt-card">
+                    <i class="fab fa-youtube"></i>
+                    <h4>VKTronics</h4>
+                    <a href="https://youtube.com/@indianstockscryptomarket" target="_blank">Subscribe</a>
+                </div>
+                <div class="yt-card">
+                    <i class="fab fa-youtube"></i>
+                    <h4>Indian Culture</h4>
+                    <a href="https://youtube.com/@indianculture881" target="_blank">Subscribe</a>
+                </div>
+                <div class="yt-card">
+                    <i class="fab fa-youtube"></i>
+                    <h4>Technical Helper</h4>
+                    <a href="https://youtube.com/@prajapatop1" target="_blank">Subscribe</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="social" class="page-section">
+            <h2 class="section-title">Social Media</h2>
+            <div class="social-box">
+                <a href="https://www.facebook.com/share/17yEMC8xib/" target="_blank"><i class="fab fa-facebook"></i> Facebook: vikramkumar</a>
+                <a href="#"><i class="fab fa-instagram"></i> Insta: ___________vikram__________</a>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-box">
+                <p><i class="fa fa-phone" style="color:var(--primary-color)"></i> +91 8209234829</p>
+                <p><i class="fa fa-envelope" style="color:var(--primary-color)"></i> vikramkumar3227@gmail.com</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Saare sections chhupa do
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Saare links se active class hata do
+            const links = document.querySelectorAll('nav ul li a');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Jo click kiya usse dikhao
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('link-' + pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
